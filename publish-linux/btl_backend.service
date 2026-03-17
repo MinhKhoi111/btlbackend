@@ -1,0 +1,16 @@
+[Unit]
+Description=BTL Backend .NET Web API App running on Ubuntu
+
+[Service]
+WorkingDirectory=/var/www/btl_backend
+ExecStart="/var/www/btl_backend/BTL backend" --urls http://0.0.0.0:80
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=btl_backend
+User=root
+Environment=ASPNETCORE_ENVIRONMENT=Production
+
+[Install]
+WantedBy=multi-user.target
